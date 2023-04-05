@@ -1,0 +1,9 @@
+global _start
+
+[bits 32]
+
+; infinite loop to constantly call main
+_start:
+	[extern main]
+	call main
+	jmp $
