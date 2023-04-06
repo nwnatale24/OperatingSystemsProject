@@ -13,13 +13,11 @@ void main() {
 //
 //	return;
 
-// part 3 of semester long project.
-
-//    print_string_with_color("hello", YELLOW, CYAN);
-//    print_line_with_color("World", MAGENTA, GREEN);
-    
-    print_character_with_color('c', YELLOW, CYAN);
-//    print_string("Today"); 
+    // part 3 of semester long project.
+    clear_terminal();
+    print_string_with_color("hello", YELLOW, CYAN);
+    print_line_with_color("World", MAGENTA, GREEN);
+    print_string("Today"); 
     
     return;
 
