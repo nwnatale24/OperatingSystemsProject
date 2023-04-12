@@ -65,7 +65,6 @@ void print_line_with_color(char* str, VGA_Color bg_color, VGA_Color font_color) 
 void print_string_with_color(char* str, VGA_Color bg_color, VGA_Color font_color) {
 
      int len = 0;
-     const int MAX_STR_SIZE = 80 * 25; //2000
 
      // walk the str and get its length
      for (int i=0; str[i] != '\0'; i++) {
@@ -74,8 +73,10 @@ void print_string_with_color(char* str, VGA_Color bg_color, VGA_Color font_color
      }     
 
      // if less than max size alloted in VGA buffer,
-     // print it. 
-     if (len < MAX_STR_SIZE) { 
+     // print it.
+     // 
+     // 85 * 20 = 2000 for VGA buffer size. 
+     if (len < 2000) { 
 
            for (int i=0; str[i] != '\0'; i++) {
 
