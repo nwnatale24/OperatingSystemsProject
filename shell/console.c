@@ -7,7 +7,6 @@ char* const VGA_BUFFER = (char*) 0xb8000;
 VGA_Color terminal_font_color = LIGHT_GRAY;
 VGA_Color terminal_background_color = BLACK;
 
-int vga_increment = 0;
 int terminal_position = 0;
 
 
@@ -105,8 +104,7 @@ void print_character_with_color(char c, VGA_Color bg_color, VGA_Color font_color
     if (c == '\n') {
 	   
         // When we get a newline character, you must reset the terminal_position variable such that it is now equal to the NEXT multiple of 160.
-        vga_increment = vga_increment + 160; 
-	terminal_position = vga_increment;
+	terminal_position = (160 % terminal_position) + 160;
         return;
 
     }
