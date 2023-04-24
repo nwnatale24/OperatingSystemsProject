@@ -1,4 +1,6 @@
 #include "keyboard.h"
+#include "portmap.h" //needed to put this here or else 
+		     //compiler warning for inb() still shows.
 
 uint8_t scan(void) {
 
