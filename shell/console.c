@@ -1,4 +1,7 @@
 #include "console.h"
+#include "keyboard.h"
+#include "portmap.h"
+#include <stdint.h>
 
 // global variables
 char* const VGA_BUFFER = (char*) 0xb8000;
@@ -115,5 +118,23 @@ void print_character_with_color(char c, VGA_Color bg_color, VGA_Color font_color
 
     //Next, compute the style byte.  The style byte takes the form of 4 bits of bg color followed by 4 bits of font color.
      VGA_BUFFER[terminal_position++] =  (bg_color << 4) | font_color;
+
+
+     update_cursor();
+
+
+}
+
+void update_cursor() {
+
+     uint16_t cursor_position = terminal_position >> 1;
+
+     outb(0x3D4, 0x0F);
+
+     outb(0x3D5, (uint8_t) (cursor_position));
+
+     outb(0x3D4, 0x0E);
+
+     outb(0x3D5, (uint8_t) (cursor_position >> 8));
 
 }

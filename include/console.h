@@ -1,9 +1,13 @@
 #ifndef MYOS_INCLUDE_CONSOLE_H
 #define MYOS_INCLUDE_CONSOLE_H
 
+#include <stdint.h>
+
 static const int VGA_WIDTH = 80;
 static const int VGA_HEIGHT = 25;
 static const int VGA_BYTES_PER_CHARACTER = 2;
+
+
 
 typedef enum {
 
@@ -35,8 +39,8 @@ void print_line(char* str);
 
 void set_terminal_font_color(VGA_Color col);
 void set_terminal_background_color(VGA_Color col);
-
-
+void update_cursor();
+uint8_t scan();
 
 // Future code will go here
 
