@@ -67,38 +67,11 @@ void print_line_with_color(char* str, VGA_Color bg_color, VGA_Color font_color) 
 
 void print_string_with_color(char* str, VGA_Color bg_color, VGA_Color font_color) {
 
-     int len = 0;
+    for (int i=0; str[i] != '\0'; i++) {
+        print_character_with_color(str[i], bg_color, font_color);
 
-     // walk the str and get its length
-     for (int i=0; str[i] != '\0'; i++) {
-           len++;
+    }
 
-     }     
-
-     // if less than max size alloted in VGA buffer,
-     // print it.
-     // 
-     // 85 * 20 = 2000 for VGA buffer size. 
-     if (len < 2000) { 
-
-           for (int i=0; str[i] != '\0'; i++) {
-
-                 print_character_with_color(str[i], bg_color, font_color);
-
-           }
-
-     // else, print to console that string is too long for buffer.
-     } else {
-           
-	   char* error_str = "ERROR: Most recent string too long for buffer.";
-
-           for (int i=0; error_str[i] != '\0'; i++) {
-
-                 print_character_with_color(error_str[i], bg_color, font_color);
-
-           }
-
-     }
 }
 
 void print_character_with_color(char c, VGA_Color bg_color, VGA_Color font_color) {
