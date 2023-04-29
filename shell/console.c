@@ -21,6 +21,7 @@ void clear_terminal() {
 
      }
 
+    update_cursor();
 }
 
 
@@ -82,7 +83,8 @@ void print_character_with_color(char c, VGA_Color bg_color, VGA_Color font_color
 	   
         // When we get a newline character, you must reset the terminal_position variable such that it is now equal to the NEXT multiple of 160.
 	terminal_position = terminal_position + 160 - (terminal_position % 160);
-        return;
+        update_cursor();
+	return;
 
     }
 
